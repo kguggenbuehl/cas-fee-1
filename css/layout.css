@@ -1,8 +1,31 @@
-.wrap {
-    width: 90%;
-    max-width: 1600px;
-    margin: 0 auto;
-}
+/* header */
 .header {
     background: var(--background-color--header);
+}
+.header__inner {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.5em 0;
+}
+.maintitle {
+    flex: 1 0 auto;
+    font-size: 3em;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+.theme-switch {
+    display: flex;
+    overflow: hidden;
+}
+.theme-switch__label--light:hover,
+.theme-switch__label--light:focus {
+    background: var(--primary-color);
+}
+.theme-switch__label--dark {
+    background: #1A2849;
+    color: #E0E3E9
+}
+.theme-switch__label--dark:hover,
+.theme-switch__label--dark:focus {
+    color: var(--primary-color);
 }

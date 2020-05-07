@@ -3,6 +3,8 @@
     --background-color: #fff;
     --primary-color: #5BE47A;
     --background-color--header: #E0E3E9;
+    --border-color: #979797;
+    --border-radius: 4px;
 }
 *,
 *::before,
@@ -13,8 +15,36 @@
     margin: 0;
     padding: 0;
 }
+label:hover {
+    cursor: pointer;
+}
 body {
     font: 1rem/1.5 'Hind', Arial, Geneva, sans-serif;
     color: var(--text-color);
     background-color: var(--background-color);
+}
+.visuallyhidden{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    overflow: hidden;
+}
+.wrap {
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+.btn {
+    padding:0.1em 0.5em;
+    background: transparent;
+    font-weight: bolder;
+}
+.border {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
 }
