@@ -13,12 +13,16 @@
         <div class="header__inner wrap">
             <h1 class="maintitle">To do's</h1>
             <form class="theme-switch border">
-                <input class="theme-switch__input theme-switch__input--light visuallyhidden" type="radio" id="theme-switch__input--light" name="theme"
+                <input class="theme-switch__input theme-switch__input--light visuallyhidden" type="radio"
+                       id="theme-switch__input--light" name="theme"
                        value="light">
-                <label class="theme-switch__label theme-switch__label--light btn" for="theme-switch__input--light">light</label>
-                <input class="theme-switch__input theme-switch__input--dark visuallyhidden" type="radio" id="theme-switch__input--dark" name="theme"
+                <label class="theme-switch__label theme-switch__label--light btn"
+                       for="theme-switch__input--light">light</label>
+                <input class="theme-switch__input theme-switch__input--dark visuallyhidden" type="radio"
+                       id="theme-switch__input--dark" name="theme"
                        value="dark">
-                <label class="theme-switch__label theme-switch__label--dark btn" for="theme-switch__input--dark">dark</label>
+                <label class="theme-switch__label theme-switch__label--dark btn"
+                       for="theme-switch__input--dark">dark</label>
             </form>
         </div>
     </header>
@@ -35,7 +39,7 @@
                     <input class="sort__input visuallyhidden" type="radio" id="sort__input--rating" name="sort"
                            value="rating">
                     <label class="sort__label btn border" for="sort__input--rating">by importance</label>
-                    <div>
+                    <div class="sort__show-finished">
                         <input class="sort__input" type="checkbox" id="sort__input--show-finished">
                         <label class="sort__label" for="sort__input--show-finished">show finished</label>
                     </div>
@@ -44,29 +48,33 @@
             <div class="app__lst">
                 <h2>Nächsten Mittwoch</h2>
                 <ul>
-                    <li>
-                        <div class="todo__heading">
-                            <div class="todo__title">
-                                <h3>Lorem ipsum dolor sit amet, consectetur.</h3>
+                    <li class="todo">
+                        <div class="todo__content">
+                            <div class="todo__heading border">
+                                <div class="todo__title">
+                                    <h3>Lorem ipsum dolor sit amet, consectetur.</h3>
+                                </div>
+                                <div class="todo__checkbox">
+                                    <input class="todo__input" type="checkbox" id="todo__input--0001"
+                                           name="todo__input">
+                                    <label class="todo__label" for="todo__input--0001">finished</label>
+                                </div>
+                                <div class="todo__rating">3/5</div>
+                                <div class="todo__opener">
+                                    <button>show more</button>
+                                </div>
                             </div>
-                            <div class="todo__checkbox">
-                                <input class="todo__input" type="checkbox" id="todo__input--0001" name="todo__input">
-                                <label class="todo__label" for="todo__input--0001">finished</label>
+                            <div class="todo__desc border">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci ipsa obcaecati
+                                    quibusdam, quidem quis suscipit voluptates? Aliquid amet architecto, beatae corporis
+                                    dolorem doloribus excepturi hic illum incidunt, ipsam magnam molestiae mollitia
+                                    natus
+                                    nisi nostrum pariatur, perspiciatis provident quas quo reprehenderit sit ut vitae.
+                                    Consequatur dolore officiis optio quo voluptate voluptatum.</p>
                             </div>
-                            <div class="todo__rating">3/5</div>
-                            <div class="todo__opener">
-                                <button>show more</button>
-                            </div>
-                        </div>
-                        <div class="todo__desc">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci ipsa obcaecati
-                                quibusdam, quidem quis suscipit voluptates? Aliquid amet architecto, beatae corporis
-                                dolorem doloribus excepturi hic illum incidunt, ipsam magnam molestiae mollitia natus
-                                nisi nostrum pariatur, perspiciatis provident quas quo reprehenderit sit ut vitae.
-                                Consequatur dolore officiis optio quo voluptate voluptatum.</p>
                         </div>
                         <div class="todo__edit">
-                            <a href="#">edit</a>
+                            <a class="btn border" href="#">edit</a>
                         </div>
                     </li>
                 </ul>

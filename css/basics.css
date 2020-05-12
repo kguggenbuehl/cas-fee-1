@@ -3,6 +3,7 @@
     --background-color: #fff;
     --primary-color: #5BE47A;
     --background-color--header: #E0E3E9;
+    --background-color--todo-content: #F1F3F7;
     --border-color: #979797;
     --border-color--active: #484848;
     --border-radius: 4px;
@@ -37,7 +38,7 @@ body {
 }
 .wrap {
     width: 90%;
-    max-width: 1600px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 .btn {
@@ -46,6 +47,8 @@ body {
     border-radius: 4px;
     background: transparent;
     font-weight: bolder;
+    color: inherit;
+    text-decoration: none;
     transition: 0.1s;
 }
 .border {
