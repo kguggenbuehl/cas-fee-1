@@ -4,6 +4,7 @@
     --primary-color: #5BE47A;
     --background-color--header: #E0E3E9;
     --border-color: #979797;
+    --border-color--active: #484848;
     --border-radius: 4px;
 }
 *,
@@ -40,11 +41,24 @@ body {
     margin: 0 auto;
 }
 .btn {
+    display: inline-block;
     padding:0.1em 0.5em;
+    border-radius: 4px;
     background: transparent;
     font-weight: bolder;
+    transition: 0.1s;
 }
 .border {
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
+}
+.btn:hover,
+.btn:focus,
+input[type=radio]:checked + label.btn {
+    background-image: linear-gradient(264deg, #B1ECD9 1%, #CBFAD6 100%);
+    border-color: var(--border-color--active)
+}
+input[type=checkbox]::before {
+    background-image: linear-gradient(264deg, #B1ECD9 1%, #CBFAD6 100%);
+    border-color: var(--border-color--active)
 }

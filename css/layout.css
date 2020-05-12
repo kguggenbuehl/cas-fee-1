@@ -1,4 +1,4 @@
-/* header */
+/* --- HEADER --- */
 .header {
     background: var(--background-color--header);
 }
@@ -28,4 +28,24 @@
 .theme-switch__label--dark:hover,
 .theme-switch__label--dark:focus {
     color: var(--primary-color);
+}
+
+/* --- APP --- */
+.app {
+    padding: 2em 0;
+}
+
+/* Sort */
+.app__sort {
+    max-width: 600px;
+}
+.sort {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 1em;
+}
+
+/* List */
+.app__lst {
+    margin: 2em 0;
 }

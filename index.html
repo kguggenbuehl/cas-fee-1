@@ -26,17 +26,19 @@
         <div class="app wrap">
             <div class="app__sort">
                 <form class="sort">
-                    <input class="sort__input" type="radio" id="sort__input--finishdate" name="sort"
+                    <input class="sort__input visuallyhidden" type="radio" id="sort__input--finishdate" name="sort"
                            value="finishdate">
-                    <label class="sort__label" for="sort__input--finishdate">by finish date</label>
-                    <input class="sort__input" type="radio" id="sort__input--createdate" name="sort"
+                    <label class="sort__label btn border" for="sort__input--finishdate">by finish date</label>
+                    <input class="sort__input visuallyhidden" type="radio" id="sort__input--createdate" name="sort"
                            value="createdate">
-                    <label class="sort__label" for="sort__input--createdate">by finish date</label>
-                    <input class="sort__input" type="radio" id="sort__input--rating" name="sort"
+                    <label class="sort__label btn border" for="sort__input--createdate">by create date</label>
+                    <input class="sort__input visuallyhidden" type="radio" id="sort__input--rating" name="sort"
                            value="rating">
-                    <label class="sort__label" for="sort__input--rating">by finish date</label>
-                    <input class="sort__input" type="checkbox" id="sort__input--show-finished">
-                    <label class="sort__label" for="sort__input--show-finished">show finished</label>
+                    <label class="sort__label btn border" for="sort__input--rating">by importance</label>
+                    <div>
+                        <input class="sort__input" type="checkbox" id="sort__input--show-finished">
+                        <label class="sort__label" for="sort__input--show-finished">show finished</label>
+                    </div>
                 </form>
             </div>
             <div class="app__lst">
