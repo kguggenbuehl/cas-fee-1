@@ -5,11 +5,12 @@
 .header__inner {
     display: flex;
     align-items: flex-start;
-    padding: 0.5em 0;
+    padding: 1.5em 0;
 }
 .maintitle {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     font-size: 3em;
+    line-height: 1.25;
     letter-spacing: 0.01em;
     text-transform: uppercase;
 }
@@ -83,4 +84,30 @@
     margin-top: calc( var(--border-radius) * -1);
     padding: 2em;
     background: var(--background-color--todo-content)
+}
+
+/* Form */
+.form {
+    display: grid;
+    grid-gap: 1em;
+    grid-template:
+    "label input"/ minmax(20%, auto) 1fr;
+}
+.form__label {
+    grid-column: label;
+    font-weight: 700;
+}
+.form__submit {
+    grid-column: 1 / -1;
+}
+.form__textarea {
+    min-height: 200px;
+}
+.form select,
+.form input[type="date"] {
+    justify-self: start;
+}
+.form__cancel {
+    grid-column: 2 / -1;
+    justify-self: end;
 }

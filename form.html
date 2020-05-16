@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new todo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/screen.css">
+</head>
+<body>
+<div class="wrapper">
+
+    <header class="header">
+        <div class="header__inner wrap">
+            <h1 class="maintitle">Add new todo</h1>
+            <form class="theme-switch border">
+                <input class="theme-switch__input theme-switch__input--light visuallyhidden" type="radio"
+                       id="theme-switch__input--light" name="theme"
+                       value="light">
+                <label class="theme-switch__label theme-switch__label--light btn"
+                       for="theme-switch__input--light">light</label>
+                <input class="theme-switch__input theme-switch__input--dark visuallyhidden" type="radio"
+                       id="theme-switch__input--dark" name="theme"
+                       value="dark">
+                <label class="theme-switch__label theme-switch__label--dark btn"
+                       for="theme-switch__input--dark">dark</label>
+            </form>
+        </div>
+    </header>
+    <main>
+        <div class="app wrap">
+            <div class="app__form">
+                <form class="form" action="#" method="POST">
+                    <label class="form__label" for="form__input--title">Title</label>
+                    <input class="form__input" type="text" id="form__input--title" name="Title">
+                    <label class="form__label" for="form__input--desc">Description</label>
+                    <textarea class="form__textarea" id="form__input--desc" name="Description"></textarea>
+                    <label class="form__label" for="form__input--importance">Importance</label>
+                    <select class="form__select" id="form__input--importance" name="Importance">
+                        <option value="1">1</option>
+                        <option value="1">2</option>
+                        <option value="1">3</option>
+                        <option value="1">4</option>
+                        <option value="1">5</option>
+                    </select>
+                    <label class="form__label" for="form__input--duedate">Duedate</label>
+                    <input class="form__input" type="date" id="form__input--duedate" name="Duedate">
+                    <button type="submit" class="form__submit btn btn--add border">Save</button>
+                    <a class=" form__cancel btn border" href="index.html">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </main>
+
+</div>
+</body>
+</html>
