@@ -51,10 +51,6 @@ body {
     text-decoration: none;
     transition: 0.1s;
 }
-.border {
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-}
 .btn:hover,
 .btn:focus,
 input[type=radio]:checked + label.btn {
@@ -64,4 +60,15 @@ input[type=radio]:checked + label.btn {
 input[type=checkbox]::before {
     background-image: linear-gradient(264deg, #B1ECD9 1%, #CBFAD6 100%);
     border-color: var(--border-color--active)
+}
+.btn--add {
+    background-image: linear-gradient(264deg, #59EABD 1%, #5BE47A 100%);
+}
+.btn--add:hover,
+.btn--add:focus {
+    background-image: linear-gradient(264deg, #14d89b 1%, #1dda47 100%);
+}
+.border {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
 }

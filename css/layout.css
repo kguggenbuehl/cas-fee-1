@@ -39,6 +39,11 @@
     padding: 2em 0;
 }
 
+/* Add */
+.app__add {
+    margin-bottom: 2em;
+}
+
 /* Sort */
 .app__sort {
     max-width: 600px;
