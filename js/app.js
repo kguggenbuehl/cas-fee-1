@@ -38,7 +38,10 @@ function createTodoList(todos) {
 }
 
 function init() {
-    document.getElementById("app__todos-lst").innerHTML = createTodoList(todos);
+    document.getElementById('app__todos-lst').innerHTML = createTodoList(todos);
+    document.getElementById('sort__input--show-finished').addEventListener('click', function(){
+        document.getElementById('app__todos-lst').classList.toggle('app__todos-lst--hidefinished');
+    })
 }
 
 init();

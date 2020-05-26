@@ -69,7 +69,7 @@
     list-style-type: none;
     margin: 0 0 1em;
 }
-.todo--finished {
+.app__todos-lst--hidefinished .todo--finished {
     display: none;
 }
 .todo__duedate {
