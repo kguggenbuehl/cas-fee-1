@@ -72,6 +72,9 @@
 .todo--finished {
     display: none;
 }
+.todo__duedate {
+    grid-column: 1 / -1;
+}
 .todo__heading {
     display: grid;
     grid-template-columns: auto 1fr auto auto;

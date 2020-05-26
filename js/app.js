@@ -8,6 +8,9 @@ function createTodoList(todos) {
 
     return todos.map(todo =>
         `<li class="todo ${ todo.finished ? 'todo--finished' : 'todo--open'}">
+            <div class="todo__duedate">
+                <h2>${todo.duedate}</h2>
+            </div>
             <div class="todo__content">
                 <div class="todo__heading border">
                     <div class="todo__title">
