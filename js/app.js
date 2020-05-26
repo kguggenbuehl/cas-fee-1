@@ -1,15 +1,15 @@
 const todos = [
-    {"id": "01", "title": "Lorem ipsum dolor sit amet", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 3, "duedate": new Date("January 31 2020 12:30"),"finished": false},
-    {"id": "02", "title": "ipsum dolor sit ", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 2, "duedate": new Date("January 10 2020 12:30"),"finished": false},
-    {"id": "03", "title": "Lorem  dolor amet", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 5, "duedate": new Date("January 20 2020 12:30"),"finished": true},
+    {"id": "01", "title": "Lorem ipsum dolor sit amet", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 3, "finishdate": new Date("January 31 2020 12:30"),"finished": false},
+    {"id": "02", "title": "ipsum dolor sit ", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 2, "finishdate": new Date("January 10 2020 12:30"),"finished": false},
+    {"id": "03", "title": "Lorem  dolor amet", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 5, "finishdate": new Date("January 20 2020 12:30"),"finished": true},
 ];
 
 function createTodoList(todos) {
 
     return todos.map(todo =>
         `<li class="todo ${ todo.finished ? 'todo--finished' : 'todo--open'}">
-            <div class="todo__duedate">
-                <h2>${todo.duedate}</h2>
+            <div class="todo__finishdate">
+                <h2>${todo.finishdate}</h2>
             </div>
             <div class="todo__content">
                 <div class="todo__heading border">

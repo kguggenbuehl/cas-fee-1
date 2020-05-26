@@ -72,7 +72,7 @@
 .app__todos-lst--hidefinished .todo--finished {
     display: none;
 }
-.todo__duedate {
+.todo__finishdate {
     grid-column: 1 / -1;
 }
 .todo__heading {
