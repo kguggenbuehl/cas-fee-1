@@ -59,7 +59,7 @@
 }
 
 /* List */
-.app__lst {
+.app__todos {
     margin: 2em 0;
 }
 .todo {
@@ -67,6 +67,10 @@
     grid-template-columns: 1fr auto;
     grid-gap: 1em;
     list-style-type: none;
+    margin: 0 0 1em;
+}
+.todo--finished {
+    display: none;
 }
 .todo__heading {
     display: grid;
@@ -79,6 +83,7 @@
     order: -1
 }
 .todo__desc {
+    display: none;
     position: relative;
     z-index: -1;
     margin-top: calc( var(--border-radius) * -1);
