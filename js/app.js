@@ -1,7 +1,7 @@
 const todos = [
-    {"id": "01", "title": "Lorem ipsum dolor sit amet", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 3, "duedate": 0,"finished": false},
-    {"id": "02", "title": "ipsum dolor sit ", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 2, "duedate": 0,"finished": false},
-    {"id": "03", "title": "Lorem  dolor amet", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 5, "duedate": 0,"finished": true},
+    {"id": "01", "title": "Lorem ipsum dolor sit amet", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 3, "duedate": new Date("January 31 2020 12:30"),"finished": false},
+    {"id": "02", "title": "ipsum dolor sit ", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 2, "duedate": new Date("January 10 2020 12:30"),"finished": false},
+    {"id": "03", "title": "Lorem  dolor amet", "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "rating": 5, "duedate": new Date("January 20 2020 12:30"),"finished": true},
 ];
 
 function createTodoList(todos) {
