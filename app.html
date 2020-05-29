@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/screen.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" defer></script>
+
     <script src="scripts/ui/app-controller.js" type="module"></script>
     <script id="template-todo-item" type="text/x-handlebars-template">
         <ul id="app__todos-lst" class="app__todos-lst app__todos-lst--hidefinished">
@@ -23,16 +24,16 @@
                             <h3>{{title}}</h3>
                         </div>
                         <div class="todo__checkbox">
-                            <input class="todo__input" type="checkbox" id="todo__input--{{id}}"
+                            <input class="todo__input" type="checkbox" id="todo__input--{{id}}" data-finish-id={{id}}
                                    name="todo__input" {{#if finished}}checked{{/if}}>
                             <label class="todo__label" for="todo__input--{{id}}">finished</label>
                         </div>
                         <div class="todo__rating">{{rating}}</div>
                         <div class="todo__opener">
-                            <button>show more</button>
+                            <button data-show-more-id={{id}}>show more</button>
                         </div>
                     </div>
-                    <div class="todo__desc border">
+                    <div class="todo__desc border" data-desc-id={{id}}>
                         <p>{{description}}</p>
                     </div>
                 </div>
