@@ -20,21 +20,17 @@ function initEventHandlers() {
     saveButton.addEventListener('click', function (event) {
         event.preventDefault();
 
-        let title = document.getElementById('form__input--title').value;
-        let description = document.getElementById('form__input--desc').value;
-        let rating = document.getElementById('form__input--importance').value;
-        let finishdate = document.getElementById('form__input--duedate').value;
+        const title = document.getElementById('form__input--title').value;
+        const description = document.getElementById('form__input--desc').value;
+        const rating = document.getElementById('form__input--importance').value;
+        const finishdate = document.getElementById('form__input--duedate').value;
 
-        let newitem = new TodoItem('', title, description, rating, finishdate, false);
-
-        console.log(newitem);
+        const newitem = new TodoItem('', title, description, rating, finishdate, false);
 
         newitem.setStorage(title);
 
         window.location.replace("app.html");
     })
-
-
 }
 
 // render DOM
