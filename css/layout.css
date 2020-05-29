@@ -69,9 +69,6 @@
     list-style-type: none;
     margin: 0 0 1em;
 }
-.app__todos-lst--hidefinished .todo--finished {
-    display: none;
-}
 .todo__finishdate {
     grid-column: 1 / -1;
 }
