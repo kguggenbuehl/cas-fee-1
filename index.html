@@ -6,6 +6,41 @@
     <title>To do list</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/screen.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script id="template-todo-item" type="text/x-handlebars-template">
+        <ul id="app__todos-lst" class="app__todos-lst app__todos-lst--hidefinished">
+            {{#each this}}
+                <li class="todo {{#if finished}}todo--finished{{else}}todo--open{{/if}}">
+                <div class="todo__finishdate">
+                    <h2>{{finishdate}}</h2>
+                </div>
+                <div class="todo__content">
+                    <div class="todo__heading border">
+                        <div class="todo__title">
+                            <h3>{{title}}</h3>
+                        </div>
+                        <div class="todo__checkbox">
+                            <input class="todo__input" type="checkbox" id="todo__input--{{id}}"
+                                   name="todo__input" {{#if finished}}checked{{/if}}>
+                            <label class="todo__label" for="todo__input--{{id}}">finished</label>
+                        </div>
+                        <div class="todo__rating">{{rating}}</div>
+                        <div class="todo__opener">
+                            <button>show more</button>
+                        </div>
+                    </div>
+                    <div class="todo__desc border">
+                        <p>{{description}}</p>
+                    </div>
+                </div>
+                <div class="todo__edit">
+                    <a class="btn border" href="#">edit</a>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
 </head>
 <body>
 <div class="wrapper">
@@ -49,45 +84,11 @@
                 </form>
             </div>
             <div id="app__todos" class="app__todos">
-                <ul id="app__todos-lst" class="app__todos-lst app__todos-lst--hidefinished">
-                    <li class="todo">
-                        <div class="todo__finishdate">
-                            <h2>12.12.2020</h2>
-                        </div>
-                        <div class="todo__content">
-                            <div class="todo__heading border">
-                                <div class="todo__title">
-                                    <h3>Lorem ipsum dolor sit amet, consectetur.</h3>
-                                </div>
 
-                                <div class="todo__checkbox">
-                                    <input class="todo__input" type="checkbox" id="todo__input--0001"
-                                           name="todo__input">
-                                    <label class="todo__label" for="todo__input--0001">finished</label>
-                                </div>
-                                <div class="todo__rating">3/5</div>
-                                <div class="todo__opener">
-                                    <button>show more</button>
-                                </div>
-                            </div>
-                            <div class="todo__desc border">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci ipsa obcaecati
-                                    quibusdam, quidem quis suscipit voluptates? Aliquid amet architecto, beatae corporis
-                                    dolorem doloribus excepturi hic illum incidunt, ipsam magnam molestiae mollitia
-                                    natus
-                                    nisi nostrum pariatur, perspiciatis provident quas quo reprehenderit sit ut vitae.
-                                    Consequatur dolore officiis optio quo voluptate voluptatum.</p>
-                            </div>
-                        </div>
-                        <div class="todo__edit">
-                            <a class="btn border" href="#">edit</a>
-                        </div>
-                    </li>
-                </ul>
             </div>
         </div>
     </main>
 </div>
-<script src="js/app.js"></script>
+
 </body>
 </html>
