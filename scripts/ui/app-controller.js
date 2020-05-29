@@ -4,32 +4,54 @@ let templateContainer;
 let templateSource;
 let createTodoList;
 
-function initEventHandlers() {
+let sortBy = 1;
+let showFinished = false;
 
+let showFinishedButton = document.getElementById('sort__input--show-finished');
+let sortButtons = Array.from(document.getElementsByClassName('sort__input'));
+
+function initEventHandlers() {
+    // init template
     templateContainer = document.getElementById('app__todos');
     templateSource = document.getElementById('template-todo-item').innerHTML;
     createTodoList = Handlebars.compile(templateSource);
 
-    renderTodoList(1, false);
+    // update sort-bar
+    updateSortBar();
+
+    // render DOM
+    renderTodoList();
 
     // add eventhandler to "Show finish"-Button
-    document.getElementById('sort__input--show-finished').addEventListener('click', function(event){
-        renderTodoList(1, event.target.checked);
-    })
-    // add eventhandler to "Sort by importance"-Button
-    document.getElementById('sort__input--rating').addEventListener('click', function(){
-        document.getElementById('app__todos-lst').innerHTML = createTodoList(todos.sort(sortByRate));
+    showFinishedButton.addEventListener('click', function(event){
+        showFinished = event.target.checked;
+        renderTodoList();
     })
 
+    // add eventhandler to "Sort"-Buttons
+    sortButtons.map(function(value){
+        value.addEventListener('click', function(event){
+            sortBy = parseInt(event.target.value);
+            renderTodoList();
+        })
+    })
 }
 
-function renderTodoList(sortBy, showFinished){
+// update checked-status of buttons
+function updateSortBar(){
+    showFinishedButton.checked = showFinished;
+    let activeBtn = sortButtons.filter(btn => parseInt(btn.value) === sortBy);
+    activeBtn[0].checked = true;
+}
+
+// render DOM
+function renderTodoList(){
     templateContainer.innerHTML = createTodoList(getNotes(sortBy, showFinished));
 }
 
 // wait until scripts have been loaded
 document.addEventListener(
-    'DOMContentLoaded',
-    () => {
-        initEventHandlers();
-    });
+'DOMContentLoaded',
+() => {
+    initEventHandlers();
+});
