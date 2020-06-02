@@ -52,8 +52,8 @@ function initEventHandlers() {
     })
 
     // add eventhandler to "Sort"-Buttons
-    sortButtons.map(function(value){
-        value.addEventListener('click', function(event){
+    sortButtons.map(function(item){
+        item.addEventListener('click', function(event){
             sortBy = parseInt(event.target.value);
             renderNoteList();
         })

@@ -35,7 +35,7 @@ export default class NoteList {
     }
     toggleIsFinishedById(id){
         let note = this.noteList.filter(item => {
-            return item.id === id;
+            return item.id === parseInt(id);
         })
         note[0].toggleFinishedStatus();
     }
@@ -69,7 +69,7 @@ function sortByRate(note1, note2){
 }
 
 function sortByFinishDate(note1, note2){
-    return note1.finishdate - note2.finishdate;
+    return note1.finishDate - note2.finishDate;
 }
 
 function sortByCreateDate(note1, note2){

@@ -26,7 +26,7 @@ function initEventHandlers() {
         newNote.rating = document.getElementById('form__input--importance').value;
         newNote.finishdate = document.getElementById('form__input--duedate').value;
 
-        sessionStorage.setItem("todoItem", JSON.stringify(newNote));
+        sessionStorage.setItem("note", JSON.stringify(newNote));
 
         window.location.replace("app.html");
     })

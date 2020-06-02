@@ -6,7 +6,7 @@ export default class Note {
         this.rating = rating;
         this.finishDate = finishDate;
         this.isFinished = isFinished;
-        this.createDate = Date.now();
+        this.createDate = new Date();
     }
     toggleFinishedStatus() {
         this.isFinished = !this.isFinished;
