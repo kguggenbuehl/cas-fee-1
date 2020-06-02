@@ -20,14 +20,13 @@ function initEventHandlers() {
     saveButton.addEventListener('click', function (event) {
         event.preventDefault();
 
-        const title = document.getElementById('form__input--title').value;
-        const description = document.getElementById('form__input--desc').value;
-        const rating = document.getElementById('form__input--importance').value;
-        const finishdate = document.getElementById('form__input--duedate').value;
+        const newNote = {};
+        newNote.title = document.getElementById('form__input--title').value;
+        newNote.description = document.getElementById('form__input--desc').value;
+        newNote.rating = document.getElementById('form__input--importance').value;
+        newNote.finishdate = document.getElementById('form__input--duedate').value;
 
-        const newitem = new TodoItem('', title, description, rating, finishdate, false);
-
-        newitem.setStorage(title);
+        sessionStorage.setItem("todoItem", JSON.stringify(newNote));
 
         window.location.replace("app.html");
     })

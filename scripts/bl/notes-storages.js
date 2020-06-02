@@ -30,6 +30,9 @@ export default class TodoList {
 
         return allTodos;
     }
+    getNumberOfNotes(){
+        return this.todos.length;
+    }
     toggleFinishedById(id){
         let note = this.todos.filter(item => {
             return item.id === parseInt(id);
@@ -46,12 +49,12 @@ export default class TodoList {
         this.todos.push(note);
     }
     getStorage(){
-        let item = JSON.parse(sessionStorage.getItem("todoItem"));
-        if( !item ) {
+        let newItem = JSON.parse(sessionStorage.getItem("todoItem"));
+        if( !newItem ) {
             return false;
         }
-        this.setTodo(item);
-        console.log(item);
+        newItem = new TodoItem(this.getNumberOfNotes(), newItem.title, newItem.description, newItem.rating, newItem.finishdate, false);
+        this.setTodo(newItem);
         sessionStorage.removeItem('todoItem');
     }
 

@@ -1,3 +1,5 @@
+import TodoList from '../bl/notes-storages.js';
+
 export default class TodoItem {
     constructor(id, title, description, rating, finishdate, finished ) {
         this.id = id;
@@ -11,7 +13,7 @@ export default class TodoItem {
     toggleFinished() {
         this.finished = !this.finished;
     }
-    setStorage(){
-        sessionStorage.setItem("todoItem", JSON.stringify(this));
+    setId(id) {
+        this.id = id;
     }
 }
