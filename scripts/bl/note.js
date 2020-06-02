@@ -1,19 +1,14 @@
-import TodoList from '../bl/notes-storages.js';
-
-export default class TodoItem {
-    constructor(id, title, description, rating, finishdate, finished ) {
+export default class Note {
+    constructor(id, title, description, rating, finishDate, isFinished ) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.rating = rating;
-        this.finishdate = finishdate;
-        this.finished = finished;
+        this.finishDate = finishDate;
+        this.isFinished = isFinished;
         this.createDate = Date.now();
     }
-    toggleFinished() {
-        this.finished = !this.finished;
-    }
-    setId(id) {
-        this.id = id;
+    toggleFinishedStatus() {
+        this.isFinished = !this.isFinished;
     }
 }

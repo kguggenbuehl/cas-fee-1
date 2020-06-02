@@ -1,77 +1,77 @@
-import TodoItem from "../bl/note.js";
+import Note from "../bl/note.js";
 
-export default class TodoList {
+export default class NoteList {
     constructor() {
-        this.todos = [
-            new TodoItem(1, "Lorem ipsum dolor sit amet", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 2, new Date("January 31 2020 12:30"), false),
-            new TodoItem(2, "ipsum dolor sit ", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 3, new Date("January 20 2020 12:30"), false),
-            new TodoItem(3, "Lorem ipsum dolor amet", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 1, new Date("January 10 2020 12:30"), true),
-            new TodoItem(4, "sit amet", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 5, new Date("January 15 2020 12:30"), true),
-            new TodoItem(5, "Lorem ipsum ", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 1, new Date("January 05 2020 12:30"), false),
+        this.noteList = [
+            new Note(1, "Lorem ipsum dolor sit amet", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 2, new Date("January 31 2020 12:30"), false),
+            new Note(2, "ipsum dolor sit ", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 3, new Date("January 20 2020 12:30"), false),
+            new Note(3, "Lorem ipsum dolor amet", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 1, new Date("January 10 2020 12:30"), true),
+            new Note(4, "sit amet", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 5, new Date("January 15 2020 12:30"), true),
+            new Note(5, "Lorem ipsum ", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 1, new Date("January 05 2020 12:30"), false),
         ];
     }
-    getNotes(orderBy, showFinished) {
+    getNotes(orderBy, showFinishedNotes) {
 
-        let allTodos = this.todos;
+        let noteList = this.noteList;
 
-        if (!showFinished){
-            allTodos = filterNotFinished(allTodos);
+        if (!showFinishedNotes){
+            noteList = filterNotFinished(noteList);
         }
 
         if(orderBy === 1) {
-            allTodos = allTodos.sort(sortByFinishDate);
+            noteList = noteList.sort(sortByFinishDate);
         }
         if(orderBy === 2) {
-            allTodos = allTodos.sort(sortByCreateDate);
+            noteList = noteList.sort(sortByCreateDate);
         }
         if(orderBy === 3) {
-            allTodos = allTodos.sort(sortByRate);
+            noteList = noteList.sort(sortByRate);
         }
 
-        return allTodos;
+        return noteList;
     }
     getNumberOfNotes(){
-        return this.todos.length;
+        return this.noteList.length;
     }
-    toggleFinishedById(id){
-        let note = this.todos.filter(item => {
-            return item.id === parseInt(id);
+    toggleIsFinishedById(id){
+        let note = this.noteList.filter(item => {
+            return item.id === id;
         })
-        note[0].toggleFinished();
+        note[0].toggleFinishedStatus();
     }
-    returnTodoById(id) {
-        let note = this.todos.filter(item => {
+    returnNoteById(id) {
+        let note = this.noteList.filter(item => {
             return item.id === id;
         })
         return note;
     }
-    setTodo(note) {
-        this.todos.push(note);
+    setNote(note) {
+        this.noteList.push(note);
     }
     getStorage(){
-        let newItem = JSON.parse(sessionStorage.getItem("todoItem"));
-        if( !newItem ) {
+        let newNote = JSON.parse(sessionStorage.getItem("note"));
+        if( !newNote ) {
             return false;
         }
-        newItem = new TodoItem(this.getNumberOfNotes(), newItem.title, newItem.description, newItem.rating, newItem.finishdate, false);
-        this.setTodo(newItem);
-        sessionStorage.removeItem('todoItem');
+        newNote = new Note(this.getNumberOfNotes(), newNote.title, newNote.description, newNote.rating, newNote.finishdate, false);
+        this.setNote(newNote);
+        sessionStorage.removeItem('note');
     }
 
 }
 
-function filterNotFinished(allTodos){
-    return allTodos.filter((value) => !value.finished);
+function filterNotFinished(noteList){
+    return noteList.filter((item) => !item.isFinished);
 }
 
-function sortByRate(todo1, todo2){
-    return todo2.rating - todo1.rating;
+function sortByRate(note1, note2){
+    return note2.rating - note1.rating;
 }
 
-function sortByFinishDate(todo1, todo2){
-    return todo1.finishdate - todo2.finishdate;
+function sortByFinishDate(note1, note2){
+    return note1.finishdate - note2.finishdate;
 }
 
-function sortByCreateDate(todo1, todo2){
-    return todo2.createdate - todo1.createdate;
+function sortByCreateDate(note1, note2){
+    return note2.createDate - note1.createDate;
 }

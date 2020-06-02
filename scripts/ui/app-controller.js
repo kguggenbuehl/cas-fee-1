@@ -1,13 +1,13 @@
-import TodoList from '../bl/notes-storages.js';
+import NoteList from '../bl/notes-storages.js';
 
 let templateContainer;
 let templateSource;
-let createTodoList;
+let createNoteList;
 
-let todoList = new TodoList();
+let noteList = new NoteList();
 
 let sortBy = 1;
-let showFinished = false;
+let showFinishedNotes = false;
 
 let showFinishedButton = document.getElementById('sort__input--show-finished');
 let sortButtons = Array.from(document.getElementsByClassName('sort__input'));
@@ -16,24 +16,24 @@ function initEventHandlers() {
     // init template
     templateContainer = document.getElementById('app__todos');
     templateSource = document.getElementById('template-todo-item').innerHTML;
-    createTodoList = Handlebars.compile(templateSource);
+    createNoteList = Handlebars.compile(templateSource);
 
     // update sort-bar
     updateSortBar();
 
     // get item from localstorage
-    todoList.getStorage();
+    noteList.getStorage();
 
     // render DOM
-    renderTodoList();
+    renderNoteList();
 
     // add eventhandler to finish- and show-more-Button
     templateContainer.addEventListener('click', function(event){
         const finishId = event.target.dataset.finishId;
         const showMoreId = event.target.dataset.showMoreId;
         if (finishId) {
-            todoList.toggleFinishedById(finishId);
-            renderTodoList();
+            noteList.toggleIsFinishedById(finishId);
+            renderNoteList();
          }
         if (showMoreId) {
             const desc = document.querySelectorAll(`[data-desc-id="${showMoreId}"]`)[0];
@@ -47,29 +47,29 @@ function initEventHandlers() {
 
     // add eventhandler to "Show finish"-Button
     showFinishedButton.addEventListener('click', function(event){
-        showFinished = event.target.checked;
-        renderTodoList();
+        showFinishedNotes = event.target.checked;
+        renderNoteList();
     })
 
     // add eventhandler to "Sort"-Buttons
     sortButtons.map(function(value){
         value.addEventListener('click', function(event){
             sortBy = parseInt(event.target.value);
-            renderTodoList();
+            renderNoteList();
         })
     })
 }
 
 // update checked-status of buttons
 function updateSortBar(){
-    showFinishedButton.checked = showFinished;
+    showFinishedButton.checked = showFinishedNotes;
     let activeBtn = sortButtons.filter(btn => parseInt(btn.value) === sortBy);
     activeBtn[0].checked = true;
 }
 
 // render DOM
-function renderTodoList(){
-    templateContainer.innerHTML = createTodoList(todoList.getNotes(sortBy, showFinished));
+function renderNoteList(){
+    templateContainer.innerHTML = createNoteList(noteList.getNotes(sortBy, showFinishedNotes));
 }
 
 // wait until scripts have been loaded
