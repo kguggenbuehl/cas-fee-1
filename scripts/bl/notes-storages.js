@@ -27,7 +27,7 @@ export default class NoteList {
         if(orderBy === 3) {
             noteList = noteList.sort(sortByRate);
         }
-
+        console.log(noteList);
         return noteList;
     }
     getNumberOfNotes(){
@@ -53,7 +53,7 @@ export default class NoteList {
         if( !newNote ) {
             return false;
         }
-        newNote = new Note(this.getNumberOfNotes(), newNote.title, newNote.description, newNote.rating, newNote.finishdate, false);
+        newNote = new Note(this.getNumberOfNotes(), newNote.title, newNote.description, newNote.rating, new Date(newNote.finishdate), false);
         this.setNote(newNote);
         sessionStorage.removeItem('note');
     }
