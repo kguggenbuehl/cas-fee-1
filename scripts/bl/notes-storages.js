@@ -21,13 +21,13 @@ export default class NoteList {
         if(orderBy === 1) {
             noteList = noteList.sort(sortByFinishDate);
         }
-        if(orderBy === 2) {
+        else if (orderBy === 2) {
             noteList = noteList.sort(sortByCreateDate);
         }
-        if(orderBy === 3) {
+        else if (orderBy === 3) {
             noteList = noteList.sort(sortByRate);
         }
-        console.log(noteList);
+
         return noteList;
     }
     getNumberOfNotes(){
@@ -57,7 +57,6 @@ export default class NoteList {
         this.setNote(newNote);
         sessionStorage.removeItem('note');
     }
-
 }
 
 function filterNotFinished(noteList){

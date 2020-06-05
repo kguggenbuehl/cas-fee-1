@@ -1,5 +1,6 @@
 :root {
     --text-color: #1A2849;
+    --text-color--checked: #1A2849;
     --background-color: #fff;
     --primary-color: #5BE47A;
     --background-color--header: #E0E3E9;
@@ -7,6 +8,12 @@
     --border-color: #979797;
     --border-color--active: #484848;
     --border-radius: 4px;
+}
+:root body[data-theme="2"]{
+    --text-color: #fff;
+    --background-color: #26262D;
+    --background-color--header: #51515C;
+    --background-color--todo-content: #484848;
 }
 *,
 *::before,
@@ -58,7 +65,8 @@ body {
 .btn:focus,
 input[type=radio]:checked + label.btn {
     background-image: linear-gradient(264deg, #B1ECD9 1%, #CBFAD6 100%);
-    border-color: var(--border-color--active)
+    border-color: var(--border-color--active);
+    color: var(--text-color--checked)
 }
 input[type=checkbox]::before {
     background-image: linear-gradient(264deg, #B1ECD9 1%, #CBFAD6 100%);
@@ -66,6 +74,7 @@ input[type=checkbox]::before {
 }
 .btn--add {
     background-image: linear-gradient(264deg, #59EABD 1%, #5BE47A 100%);
+    color: var(--text-color--checked)
 }
 .btn--add:hover,
 .btn--add:focus {

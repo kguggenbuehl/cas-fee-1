@@ -1,4 +1,5 @@
 import NoteList from '../bl/notes-storages.js';
+import Theme from '../ui/theme-controller.js';
 
 let templateContainer;
 let templateSource;
@@ -72,9 +73,15 @@ function renderNoteList(){
     templateContainer.innerHTML = createNoteList(noteList.getNotes(sortBy, showFinishedNotes));
 }
 
+// set theme
+function setTheme(){
+    const theme = new Theme();
+}
+
 // wait until scripts have been loaded
 document.addEventListener(
 'DOMContentLoaded',
 () => {
     initEventHandlers();
+    setTheme();
 });

@@ -29,6 +29,10 @@
     background: #1A2849;
     color: #E0E3E9
 }
+body[data-theme="2"] input[type=radio]:checked + label.btn.theme-switch__label--dark {
+    background: #1A2849;
+    color: var(--primary-color);
+}
 .theme-switch__label--dark:hover,
 .theme-switch__label--dark:focus {
     color: var(--primary-color);
