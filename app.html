@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/screen.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js" defer></script>
+    <script src="scripts/bl/handlebars.js" defer></script>
 
     <script src="scripts/ui/app-controller.js" type="module"></script>
     <script id="template-todo-item" type="text/x-handlebars-template">
@@ -16,7 +18,7 @@
             {{#each this}}
                 <li class="todo {{#if finished}}todo--finished{{else}}todo--open{{/if}}">
                 <div class="todo__finishdate">
-                    <h2>{{finishDate}}</h2>
+                    <h2>{{formatDate finishDate}}</h2>
                 </div>
                 <div class="todo__content">
                     <div class="todo__heading border">
