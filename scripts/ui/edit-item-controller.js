@@ -1,4 +1,5 @@
 import TodoItem from '../bl/note.js';
+import Theme from '../ui/theme-controller.js';
 
 let templateContainer;
 let templateSource;
@@ -42,4 +43,5 @@ document.addEventListener(
     'DOMContentLoaded',
     () => {
         initEventHandlers();
+        const theme = new Theme();
     });
