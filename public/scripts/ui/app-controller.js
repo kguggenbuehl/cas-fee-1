@@ -29,10 +29,11 @@ function initEventHandlers() {
     templateContainer.addEventListener('click', function(event){
         const finishId = event.target.dataset.finishId;
         const showMoreId = event.target.dataset.showMoreId;
+        const deleteId = event.target.dataset.deleteId;
 
         if (finishId) {
             noteList.toggleIsFinishedById(finishId);
-            renderNoteList();
+            return renderNoteList();
          }
         if (showMoreId) {
             const desc = document.querySelectorAll(`[data-desc-id="${showMoreId}"]`)[0];
@@ -42,12 +43,24 @@ function initEventHandlers() {
                 desc.style.display = "block";
             }
         }
+        if (deleteId) {
+            noteList.deleteNote(deleteId);
+            return renderNoteList();
+        }
     })
 
     // add eventhandler to "Show finish"-Button
     showFinishedButton.addEventListener('click', function(event){
         showFinishedNotes = event.target.checked;
         renderNoteList();
+    })
+
+    // add eventhandler to "Sort"-Buttons
+    sortButtons.map(function(item){
+        item.addEventListener('click', function(event){
+            sortBy = parseInt(event.target.value);
+            renderNoteList();
+        })
     })
 
     // add eventhandler to "Sort"-Buttons

@@ -9,9 +9,7 @@ Handlebars.registerHelper('formatDateForInput', function (date) {
 })
 
 Handlebars.registerHelper('formatRating', function (rating) {
-
     let stars = '';
-
     for (let i = 0; i < rating; i++){
         stars += '<i class="fas fa-star"></i>';
     }

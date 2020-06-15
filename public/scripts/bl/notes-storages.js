@@ -1,4 +1,3 @@
-import Note from "../bl/note.js";
 import httpService from '../bl/http-service.js'
 
 export default class NoteList {
@@ -11,7 +10,7 @@ export default class NoteList {
             this.noteList = filterNotFinished(this.noteList);
         }
 
-        if(orderBy === 1) {
+        if (orderBy === 1) {
             this.noteList = this.noteList.sort(sortByFinishDate);
         }
         else if (orderBy === 2) {
@@ -23,14 +22,23 @@ export default class NoteList {
 
         return this.noteList;
     }
-
+    async setNote(note) {
+        return await httpService.ajax("POST", "/notes/", {note: note});
+    }
+    async getNote(id) {
+        return await httpService.ajax("GET", `/notes/${id}`, undefined);
+    }
+    async updateNote(id, note) {
+        return await httpService.ajax("PATCH", `/notes/${id}`, {note: note});
+    }
+    async deleteNote(id) {
+        return await httpService.ajax("DELETE", `/notes/${id}`);
+    }
     async toggleIsFinishedById(id){
 
         let note = this.returnNoteById(id);
-
         note.isFinished = !note.isFinished;
-
-        return await httpService.ajax("PATCH", `/notes/${id}`, {note: note});
+        this.updateNote(id, note);
 
     }
     returnNoteById(id) {
@@ -39,12 +47,7 @@ export default class NoteList {
         })
         return note[0];
     }
-    async setNote(note) {
-        return await httpService.ajax("POST", "/notes/", {note: note});
-    }
-    async getNote(id) {
-        return await httpService.ajax("GET", `/notes/${id}`, undefined);
-    }
+
 }
 
 function filterNotFinished(noteList){
