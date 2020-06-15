@@ -8,6 +8,16 @@ Handlebars.registerHelper('formatDateForInput', function (date) {
     return dateForInput;
 })
 
+Handlebars.registerHelper('formatRating', function (rating) {
+
+    let stars = '';
+
+    for (let i = 0; i < rating; i++){
+        stars += '<i class="fas fa-star"></i>';
+    }
+    return stars;
+})
+
 Handlebars.registerHelper('isSelected', function (value, id) {
     return value === id ? 'selected' : '';
 });

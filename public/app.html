@@ -32,7 +32,7 @@
                                    name="todo__input" {{#if isFinished}}checked{{/if}}>
                             <label class="todo__label" for="todo__input--{{_id}}"><span class="visuallyhidden">is finished</span></label>
                         </div>
-                        <div class="todo__rating">{{rating}}</div>
+                        <div class="todo__rating">{{{formatRating rating}}}</div>
                         <div class="todo__opener">
                             <button class="btn btn--icon border" data-show-more-id={{_id}}><i class="fas fa-caret-down"></i></button>
                         </div>
