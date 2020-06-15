@@ -1,6 +1,7 @@
 import Note from '../bl/note.js';
 import NoteList from '../bl/notes-storages.js';
 import Theme from '../ui/theme-controller.js';
+import httpService from "../bl/http-service.js";
 
 let templateContainer;
 let templateSource;
@@ -20,22 +21,26 @@ function initEventHandlers() {
     renderForm();
 
     // add eventhandler to "Save"-Button
-    //saveButton = document.getElementById('form__submit');
     templateContainer.addEventListener('click', function (event) {
         if( event.target === document.getElementById('form__submit')){
 
+            event.preventDefault() ;
 
-        event.preventDefault() ;
+            const newNote = new Note();
+            newNote.title = document.getElementById('form__input--title').value;
+            newNote.description = document.getElementById('form__input--desc').value;
+            newNote.rating = document.getElementById('form__input--importance').value;
+            newNote.finishDate = new Date(document.getElementById('form__input--duedate').value);
 
-        const newNote = new Note();
-        newNote.title = document.getElementById('form__input--title').value;
-        newNote.description = document.getElementById('form__input--desc').value;
-        newNote.rating = document.getElementById('form__input--importance').value;
-        newNote.finishDate = new Date(document.getElementById('form__input--duedate').value);
+            let id = getDataFromQuery('id');
 
-        noteList.setNote(newNote);
+            if (id) {
+                httpService.ajax("PATCH", `/notes/${id}`, {note: newNote})
+            } else {
+                noteList.setNote(newNote);
+            }
 
-        window.location.replace("app.html");
+            window.location.replace("app.html");
 
         };
     })
@@ -43,10 +48,15 @@ function initEventHandlers() {
 
 // render DOM
 async function renderForm(){
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
+    const id = getDataFromQuery('id');
     const notes = await noteList.getNote(id) || {};
     templateContainer.innerHTML = createForm(notes);
+}
+
+function getDataFromQuery(key){
+    const params = new URLSearchParams(window.location.search);
+    const value = params.get(key) || false;
+    return value;
 }
 
 // wait until scripts have been loaded
