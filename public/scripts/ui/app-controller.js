@@ -91,5 +91,4 @@ document.addEventListener(
 'DOMContentLoaded',
 () => {
     initEventHandlers();
-    const theme = new Theme();
 });

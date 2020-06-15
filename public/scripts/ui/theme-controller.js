@@ -1,6 +1,6 @@
 import Cookie from "../bl/cookie.js";
 
-export default class Theme {
+class Theme {
     constructor() {
         this.themeSwitcher = document.getElementById('theme-switch');
         this.cookieKey ='theme';
@@ -34,3 +34,7 @@ export default class Theme {
         this.cookie.setCookie(cname, cvalue, exdays);
     }
 }
+
+
+const theme = new Theme();
+export default theme;

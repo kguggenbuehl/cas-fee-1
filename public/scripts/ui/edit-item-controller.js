@@ -35,14 +35,14 @@ function initEventHandlers() {
             let id = getDataFromQuery('id');
 
             if (id) {
-                httpService.ajax("PATCH", `/notes/${id}`, {note: newNote})
+                noteList.updateNote(id, newNote);
             } else {
                 noteList.setNote(newNote);
             }
 
             window.location.replace("app.html");
 
-        };
+        }
     })
 }
 
@@ -64,5 +64,4 @@ document.addEventListener(
     'DOMContentLoaded',
     () => {
         initEventHandlers();
-        const theme = new Theme();
     });
