@@ -2,18 +2,12 @@ import Cookie from "../bl/cookie.js";
 
 export default class Theme {
     constructor() {
-        this.bodyElement = document.getElementById('body');
         this.themeSwitcher = document.getElementById('theme-switch');
-
         this.cookieKey ='theme';
         this.cookie = new Cookie();
-
         this.theme = this.getThemeCookie(this.cookieKey) || 1;
-
         this.updateHtmlTheme(this.theme);
-
         this.addEventListeners();
-
     }
     addEventListeners(){
         this.themeSwitcher.addEventListener('click', function (event) {
@@ -29,7 +23,7 @@ export default class Theme {
         this.updateHtmlTheme();
     }
     updateHtmlTheme(){
-        this.bodyElement.setAttribute('data-theme', this.theme);
+        document.body.setAttribute('data-theme', this.theme);
         let activeBtn = document.querySelectorAll(`[value="${this.theme}"]`);
         activeBtn[0].checked = true;
     }

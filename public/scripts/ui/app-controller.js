@@ -22,9 +22,6 @@ function initEventHandlers() {
     // update sort-bar
     updateSortBar();
 
-    // get item from localstorage
-    noteList.getStorage();
-
     // render DOM
     renderNoteList();
 
@@ -32,6 +29,7 @@ function initEventHandlers() {
     templateContainer.addEventListener('click', function(event){
         const finishId = event.target.dataset.finishId;
         const showMoreId = event.target.dataset.showMoreId;
+
         if (finishId) {
             noteList.toggleIsFinishedById(finishId);
             renderNoteList();
@@ -69,8 +67,10 @@ function updateSortBar(){
 }
 
 // render DOM
-function renderNoteList(){
-    templateContainer.innerHTML = createNoteList(noteList.getNotes(sortBy, showFinishedNotes));
+async function renderNoteList(){
+    const notes = await noteList.getNotes(sortBy, showFinishedNotes);
+    templateContainer.innerHTML = createNoteList(notes);
+
 }
 
 // wait until scripts have been loaded

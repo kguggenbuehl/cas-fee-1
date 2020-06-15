@@ -1,4 +1,5 @@
-import TodoItem from '../bl/note.js';
+import Note from '../bl/note.js';
+import NoteList from '../bl/notes-storages.js';
 import Theme from '../ui/theme-controller.js';
 
 let templateContainer;
@@ -6,6 +7,8 @@ let templateSource;
 let createForm;
 
 let saveButton;
+
+const noteList = new NoteList();
 
 function initEventHandlers() {
     // init template
@@ -21,13 +24,13 @@ function initEventHandlers() {
     saveButton.addEventListener('click', function (event) {
         event.preventDefault();
 
-        const newNote = {};
+        const newNote = new Note();
         newNote.title = document.getElementById('form__input--title').value;
         newNote.description = document.getElementById('form__input--desc').value;
         newNote.rating = document.getElementById('form__input--importance').value;
-        newNote.finishdate = document.getElementById('form__input--duedate').value;
-
-        sessionStorage.setItem("note", JSON.stringify(newNote));
+        newNote.finishDate = new Date(document.getElementById('form__input--duedate').value);
+        console.log(newNote);
+        noteList.setNote(newNote);
 
         window.location.replace("app.html");
     })
