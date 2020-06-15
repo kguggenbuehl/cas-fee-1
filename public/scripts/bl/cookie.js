@@ -1,4 +1,4 @@
- export default class Cookie {
+class Cookie {
     setCookie(cname, cvalue, exdays) {
         let d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -17,6 +17,9 @@
                 return c.substring(name.length, c.length);
             }
         }
-        return "";
+        return false;
     }
 }
+
+const cookie = new Cookie();
+export default cookie;

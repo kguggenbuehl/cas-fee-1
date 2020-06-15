@@ -1,10 +1,10 @@
-import Cookie from "../bl/cookie.js";
+import cookie from "../bl/cookie.js";
 
 class Theme {
     constructor() {
         this.themeSwitcher = document.getElementById('theme-switch');
         this.cookieKey ='theme';
-        this.cookie = new Cookie();
+        this.cookie = cookie;
         this.theme = this.getThemeCookie(this.cookieKey) || 1;
         this.updateHtmlTheme(this.theme);
         this.addEventListeners();

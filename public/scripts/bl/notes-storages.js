@@ -1,22 +1,28 @@
-import httpService from '../bl/http-service.js'
+import httpService from '../bl/http-service.js';
+import cookie from "../bl/cookie.js";
 
 export default class NoteList {
 
-    async getNotes(orderBy, showFinishedNotes) {
+    constructor() {
+        this.sortBy = cookie.getCookie('sortBy') || 1;
+        this.showFinishedNotes = cookie.getCookie('showFinishedNotes') || false;
+    }
+
+    async getNotes() {
 
         this.noteList = await httpService.ajax("GET", "/notes/", undefined);
 
-        if (!showFinishedNotes){
+        if (!this.showFinishedNotes){
             this.noteList = filterNotFinished(this.noteList);
         }
 
-        if (orderBy === 1) {
+        if (this.sortBy === 1) {
             this.noteList = this.noteList.sort(sortByFinishDate);
         }
-        else if (orderBy === 2) {
+        else if (this.sortBy === 2) {
             this.noteList = this.noteList.sort(sortByCreateDate);
         }
-        else if (orderBy === 3) {
+        else if (this.sortBy === 3) {
             this.noteList = this.noteList.sort(sortByRate);
         }
 
@@ -46,6 +52,26 @@ export default class NoteList {
             return item._id === id;
         })
         return note[0];
+    }
+    setSortOrder(sortBy){
+        this.sortBy = sortBy;
+        try {
+            cookie.setCookie('sortBy', sortBy, 365);
+        }
+        catch (e) {
+            console.error(e);
+        }
+
+    }
+    setShowFinishedStatus(showFinishedNotes){
+        this.showFinishedNotes = showFinishedNotes;
+        try {
+            cookie.setCookie('showFinishedNotes', showFinishedNotes, 365);
+        }
+        catch (e) {
+            console.error(e);
+        }
+
     }
 
 }

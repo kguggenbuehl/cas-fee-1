@@ -7,9 +7,6 @@ let createNoteList;
 
 let noteList = new NoteList();
 
-let sortBy = 1;
-let showFinishedNotes = false;
-
 let showFinishedButton = document.getElementById('sort__input--show-finished');
 let sortButtons = Array.from(document.getElementsByClassName('sort__input'));
 
@@ -51,22 +48,14 @@ function initEventHandlers() {
 
     // add eventhandler to "Show finish"-Button
     showFinishedButton.addEventListener('click', function(event){
-        showFinishedNotes = event.target.checked;
+        noteList.setShowFinishedStatus(event.target.checked);
         renderNoteList();
     })
 
     // add eventhandler to "Sort"-Buttons
     sortButtons.map(function(item){
         item.addEventListener('click', function(event){
-            sortBy = parseInt(event.target.value);
-            renderNoteList();
-        })
-    })
-
-    // add eventhandler to "Sort"-Buttons
-    sortButtons.map(function(item){
-        item.addEventListener('click', function(event){
-            sortBy = parseInt(event.target.value);
+            noteList.setSortOrder(parseInt(event.target.value));
             renderNoteList();
         })
     })
@@ -74,14 +63,14 @@ function initEventHandlers() {
 
 // update checked-status of buttons
 function updateSortBar(){
-    showFinishedButton.checked = showFinishedNotes;
-    let activeBtn = sortButtons.filter(btn => parseInt(btn.value) === sortBy);
+    showFinishedButton.checked = noteList.showFinishedNotes;
+    let activeBtn = sortButtons.filter(btn => btn.value === noteList.sortBy);
     activeBtn[0].checked = true;
 }
 
 // render DOM
 async function renderNoteList(){
-    const notes = await noteList.getNotes(sortBy, showFinishedNotes);
+    const notes = await noteList.getNotes();
     templateContainer.innerHTML = createNoteList(notes);
 
 }
