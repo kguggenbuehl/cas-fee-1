@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
+import openurl from 'openurl';
 
 import {notesRoutes} from './routes/notesRoutes';
 
@@ -21,4 +22,5 @@ const hostname = '127.0.0.1';
 const port = 3004;
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
+    openurl.open(`http://${hostname}:${port}/`);
 });
