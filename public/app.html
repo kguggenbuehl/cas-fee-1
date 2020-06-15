@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/screen.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/solid.min.js" defer></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js" defer></script>
     <script src="scripts/bl/handlebars.js" defer></script>
@@ -28,11 +30,11 @@
                         <div class="todo__checkbox">
                             <input class="todo__input" type="checkbox" id="todo__input--{{_id}}" data-finish-id={{_id}}
                                    name="todo__input" {{#if isFinished}}checked{{/if}}>
-                            <label class="todo__label" for="todo__input--{{_id}}">finished</label>
+                            <label class="todo__label" for="todo__input--{{_id}}"><span class="visuallyhidden">is finished</span></label>
                         </div>
                         <div class="todo__rating">{{rating}}</div>
                         <div class="todo__opener">
-                            <button data-show-more-id={{_id}}>show more</button>
+                            <button class="btn btn--icon border" data-show-more-id={{_id}}><i class="fas fa-caret-down"></i></button>
                         </div>
                     </div>
                     <div class="todo__desc border" data-desc-id={{_id}}>
@@ -40,7 +42,10 @@
                     </div>
                 </div>
                 <div class="todo__edit">
-                    <a class="btn border" href="edit-item.html?id={{_id}}">edit</a>
+                    <a class="btn btn--icon border" href="edit-item.html?id={{_id}}"><i class="fas fa-edit"></i></a>
+                </div>
+                <div class="todo__delete">
+                    <a class="btn btn--icon border" href="#""><i class="fas fa-trash-alt"></i></a>
                 </div>
             </li>
             {{/each}}
@@ -58,31 +63,31 @@
                        id="theme-switch__input--light" name="theme"
                        value="1">
                 <label class="theme-switch__label theme-switch__label--light btn"
-                       for="theme-switch__input--light">light</label>
+                       for="theme-switch__input--light">light <i class="fas fa-sun"></i></label>
                 <input class="theme-switch__input theme-switch__input--dark visuallyhidden" type="radio"
                        id="theme-switch__input--dark" name="theme"
                        value="2">
                 <label class="theme-switch__label theme-switch__label--dark btn"
-                       for="theme-switch__input--dark">dark</label>
+                       for="theme-switch__input--dark">dark <i class="fas fa-moon"></i></label>
             </form>
         </div>
     </header>
     <main>
         <div class="app wrap">
             <div class="app__add">
-                <a href="edit-item.html" class="btn btn--add border">add</a>
+                <a href="edit-item.html" class="btn btn--add border">add<i class="fas fa-plus"></i></a>
             </div>
             <div class="app__sort">
                 <form class="sort">
                     <input class="sort__input visuallyhidden" type="radio" id="sort__input--finishdate" name="sort"
                            value="1">
-                    <label class="sort__label btn border" for="sort__input--finishdate">by finish date</label>
+                    <label class="sort__label btn border" for="sort__input--finishdate">by finish date <i class="fas fa-sort"></i></label>
                     <input class="sort__input visuallyhidden" type="radio" id="sort__input--createdate" name="sort"
                            value="2">
-                    <label class="sort__label btn border" for="sort__input--createdate">by create date</label>
+                    <label class="sort__label btn border" for="sort__input--createdate">by create date <i class="fas fa-sort"></i></label>
                     <input class="sort__input visuallyhidden" type="radio" id="sort__input--rating" name="sort"
                            value="3">
-                    <label class="sort__label btn border" for="sort__input--rating">by importance</label>
+                    <label class="sort__label btn border" for="sort__input--rating">by importance <i class="fas fa-sort"></i></label>
                     <div class="sort__show-finished">
                         <input type="checkbox" id="sort__input--show-finished">
                         <label class="sort__label" for="sort__input--show-finished">show finished</label>

@@ -7,6 +7,9 @@
     --background-color--todo-content: #F1F3F7;
     --border-color: #979797;
     --border-color--active: #484848;
+    --gradient-btn: linear-gradient(264deg, #B1ECD9 1%, #CBFAD6 100%);
+    --gradient-btn--darker: linear-gradient(264deg, #59EABD 1%, #5BE47A 100%);
+    --gradient-btn--darker--hover: linear-gradient(264deg, #14d89b 1%, #1dda47 100%);
     --border-radius: 4px;
 }
 :root body[data-theme="2"]{
@@ -24,7 +27,8 @@
     margin: 0;
     padding: 0;
 }
-label:hover {
+label:hover,
+.btn:hover {
     cursor: pointer;
 }
 body {
@@ -49,7 +53,9 @@ body {
     margin: 0 auto;
 }
 .btn {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding:0.1em 0.5em;
     border-radius: 4px;
     background: transparent;
@@ -61,24 +67,27 @@ body {
     line-height: 1.5;
     transition: 0.1s;
 }
+.btn .fas {
+    margin-left: 1em;
+    pointer-events: none;
+}
 .btn:hover,
 .btn:focus,
 input[type=radio]:checked + label.btn {
-    background-image: linear-gradient(264deg, #B1ECD9 1%, #CBFAD6 100%);
+    background-image: var(--gradient-btn);
     border-color: var(--border-color--active);
     color: var(--text-color--checked)
 }
-input[type=checkbox]::before {
-    background-image: linear-gradient(264deg, #B1ECD9 1%, #CBFAD6 100%);
-    border-color: var(--border-color--active)
-}
 .btn--add {
-    background-image: linear-gradient(264deg, #59EABD 1%, #5BE47A 100%);
+    background-image: var(--gradient-btn--darker);
     color: var(--text-color--checked)
 }
 .btn--add:hover,
 .btn--add:focus {
-    background-image: linear-gradient(264deg, #14d89b 1%, #1dda47 100%);
+    background-image: var(--gradient-btn--darker--hover);
+}
+.btn--icon .fas {
+    margin: 0.2em;
 }
 .border {
     border: 1px solid var(--border-color);

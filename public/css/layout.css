@@ -26,17 +26,17 @@
     background: var(--primary-color);
 }
 .theme-switch__label--dark {
-    background: #1A2849;
-    color: #E0E3E9
+    background: var(--text-color);
+    color: var(--background-color--header);
 }
 body[data-theme="2"] input[type=radio]:checked + label.btn.theme-switch__label--dark {
-    background: #1A2849;
+    background: var(--background-color);
     color: var(--primary-color);
 }
 .theme-switch__label--dark:hover,
 .theme-switch__label--dark:focus {
     color: var(--primary-color);
-    background: #1A2849;
+    background: var(--text-color);
 }
 
 /* --- APP --- */
@@ -47,6 +47,9 @@ body[data-theme="2"] input[type=radio]:checked + label.btn.theme-switch__label--
 /* Add */
 .app__add {
     margin-bottom: 2em;
+}
+.app__add .btn--add {
+    width: 5em;
 }
 
 /* Sort */
@@ -60,6 +63,11 @@ body[data-theme="2"] input[type=radio]:checked + label.btn.theme-switch__label--
 }
 .sort__show-finished {
     grid-column: 1 / -1;
+    display: flex;
+    align-items: baseline;
+}
+.sort__show-finished input {
+    margin-right:0.5em;
 }
 
 /* List */
@@ -68,7 +76,7 @@ body[data-theme="2"] input[type=radio]:checked + label.btn.theme-switch__label--
 }
 .todo {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     grid-gap: 1em;
     list-style-type: none;
     margin: 0 0 1em;
@@ -84,7 +92,8 @@ body[data-theme="2"] input[type=radio]:checked + label.btn.theme-switch__label--
     background: var(--background-color);
 }
 .todo__checkbox {
-    order: -1
+    order: -1;
+    align-self: center;
 }
 .todo__desc {
     display: none;
@@ -108,6 +117,7 @@ body[data-theme="2"] input[type=radio]:checked + label.btn.theme-switch__label--
 }
 .form__submit {
     grid-column: 1 / -1;
+    justify-content: center;
 }
 .form__textarea {
     min-height: 200px;
