@@ -1,2 +1,5 @@
-# cas-fee-1
-CAS FEE Projekt 1
+# CAS FEE - Projekt 1
+## Install
+`npm install`
+
+`npm start`
