@@ -1,8 +1,6 @@
 import {notesStore} from '../services/notesStore'
 
 export class NotesController {
-    constructor() {
-    }
 
     async getNotes(req, res) {
         res.json(await notesStore.all() || []);

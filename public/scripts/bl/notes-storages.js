@@ -2,9 +2,7 @@ import Note from "../bl/note.js";
 import httpService from '../bl/http-service.js'
 
 export default class NoteList {
-    constructor() {
 
-    }
     async getNotes(orderBy, showFinishedNotes) {
 
         this.noteList = await httpService.ajax("GET", "/notes/", undefined);
@@ -42,8 +40,10 @@ export default class NoteList {
         return note[0];
     }
     async setNote(note) {
-        console.log(note);
         return await httpService.ajax("POST", "/notes/", {note: note});
+    }
+    async getNote(id) {
+        return await httpService.ajax("GET", `/notes/${id}`, undefined);
     }
 }
 

@@ -9,26 +9,31 @@
     <link rel="stylesheet" href="css/screen.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js" defer></script>
+    <script src="scripts/bl/handlebars.js" defer></script>
+
     <script src="scripts/ui/edit-item-controller.js" type="module"></script>
     <script id="template-form" type="text/x-handlebars-template">
+        {{#with this}}
         <form class="form" action="#" method="POST">
             <label class="form__label" for="form__input--title">Title</label>
-            <input class="form__input" type="text" id="form__input--title" name="Title" value="{{value}}" required>
+            <input class="form__input" type="text" id="form__input--title" name="Title" value="{{title}}" required>
             <label class="form__label" for="form__input--desc">Description</label>
-            <textarea class="form__textarea" id="form__input--desc" name="Description"></textarea>
+            <textarea class="form__textarea" id="form__input--desc" name="Description">{{description}}</textarea>
             <label class="form__label" for="form__input--importance">Importance</label>
             <select class="form__select" id="form__input--importance" name="Importance" required>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option value="1" {{isSelected '1' rating}}>1</option>
+                <option value="2" {{isSelected '2' rating}}>2</option>
+                <option value="3" {{isSelected '3' rating}}>3</option>
+                <option value="4" {{isSelected '4' rating}}>4</option>
+                <option value="5" {{isSelected '5' rating}}>5</option>
             </select>
             <label class="form__label" for="form__input--duedate">Duedate</label>
-            <input class="form__input" type="date" id="form__input--duedate" name="Duedate" required>
+            <input class="form__input" type="date" id="form__input--duedate" name="Duedate" value="{{formatDateForInput finishDate}}" required>
             <button type="submit" class="form__submit btn btn--add border" id="form__submit">Save</button>
             <a class=" form__cancel btn border" href="app.html">Cancel</a>
         </form>
+        {{/with}}
     </script>
 
 </head>

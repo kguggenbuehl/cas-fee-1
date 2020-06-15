@@ -20,25 +20,33 @@ function initEventHandlers() {
     renderForm();
 
     // add eventhandler to "Save"-Button
-    saveButton = document.getElementById('form__submit');
-    saveButton.addEventListener('click', function (event) {
-        event.preventDefault();
+    //saveButton = document.getElementById('form__submit');
+    templateContainer.addEventListener('click', function (event) {
+        if( event.target === document.getElementById('form__submit')){
+
+
+        event.preventDefault() ;
 
         const newNote = new Note();
         newNote.title = document.getElementById('form__input--title').value;
         newNote.description = document.getElementById('form__input--desc').value;
         newNote.rating = document.getElementById('form__input--importance').value;
         newNote.finishDate = new Date(document.getElementById('form__input--duedate').value);
-        console.log(newNote);
+
         noteList.setNote(newNote);
 
         window.location.replace("app.html");
+
+        };
     })
 }
 
 // render DOM
-function renderForm(){
-    templateContainer.innerHTML = createForm([]);
+async function renderForm(){
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const notes = await noteList.getNote(id) || {};
+    templateContainer.innerHTML = createForm(notes);
 }
 
 // wait until scripts have been loaded
