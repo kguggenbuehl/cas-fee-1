@@ -49,14 +49,14 @@ function initEventHandlers() {
     // add eventhandler to "Show finish"-Button
     showFinishedButton.addEventListener('click', function(event){
         noteList.setShowFinishedStatus(event.target.checked);
-        renderNoteList();
+        return renderNoteList();
     })
 
     // add eventhandler to "Sort"-Buttons
     sortButtons.map(function(item){
         item.addEventListener('click', function(event){
             noteList.setSortOrder(parseInt(event.target.value));
-            renderNoteList();
+            return renderNoteList();
         })
     })
 }
@@ -64,7 +64,7 @@ function initEventHandlers() {
 // update checked-status of buttons
 function updateSortBar(){
     showFinishedButton.checked = noteList.showFinishedNotes;
-    let activeBtn = sortButtons.filter(btn => btn.value === noteList.sortBy);
+    let activeBtn = sortButtons.filter(btn => parseInt(btn.value) === noteList.sortBy);
     activeBtn[0].checked = true;
 }
 

@@ -4,8 +4,8 @@ import cookie from "../bl/cookie.js";
 export default class NoteList {
 
     constructor() {
-        this.sortBy = cookie.getCookie('sortBy') || 1;
-        this.showFinishedNotes = cookie.getCookie('showFinishedNotes') || false;
+        this.sortBy = parseInt(cookie.getCookie('sortBy')) || 1;
+        this.showFinishedNotes = cookie.getCookie('showFinishedNotes') === 'true' ? true : false;
     }
 
     async getNotes() {
@@ -61,7 +61,6 @@ export default class NoteList {
         catch (e) {
             console.error(e);
         }
-
     }
     setShowFinishedStatus(showFinishedNotes){
         this.showFinishedNotes = showFinishedNotes;
@@ -71,9 +70,7 @@ export default class NoteList {
         catch (e) {
             console.error(e);
         }
-
     }
-
 }
 
 function filterNotFinished(noteList){
