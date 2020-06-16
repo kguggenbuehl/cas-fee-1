@@ -1,5 +1,12 @@
 Handlebars.registerHelper('formatDateReadable', function (date) {
-    const dateAsCalendar = moment(date).format('MMMM Do YYYY');
+    const dateAsCalendar =moment(date).calendar({
+        sameDay: '[Today]',
+        nextDay: '[Tomorrow]',
+        nextWeek: 'dddd',
+        lastDay: '[Yesterday]',
+        lastWeek: '[Last] dddd',
+        sameElse: 'MMMM Do YYYY'
+    });
     return dateAsCalendar;
 })
 

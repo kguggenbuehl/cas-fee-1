@@ -77,6 +77,7 @@ export default class NoteList {
 }
 
 function filterNotFinished(noteList){
+    console.log(noteList);
     return noteList.filter((item) => !item.isFinished);
 }
 
