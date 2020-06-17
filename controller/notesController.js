@@ -2,10 +2,6 @@ import {notesStore} from '../services/notesStore'
 
 export class NotesController {
 
-    async getOnlyUnfinishedNotes(req, res) {
-        res.json(await notesStore.getOnlyUnfinishedNotes() || []);
-    };
-
     async getNotes(req, res) {
         if (req.params.showFinished === 'true') {
             res.json(await notesStore.all() || []);
