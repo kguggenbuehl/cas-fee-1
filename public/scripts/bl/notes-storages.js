@@ -10,11 +10,7 @@ export default class NoteList {
 
     async getNotes() {
 
-        this.noteList = await httpService.ajax("GET", "/notes/", undefined);
-
-        if (!this.showFinishedNotes){
-            this.noteList = filterNotFinished(this.noteList);
-        }
+        this.noteList = await httpService.ajax("GET", `/notes/showfinished=${this.showFinishedNotes}`, undefined);
 
         if (this.sortBy === 1) {
             this.noteList = this.noteList.sort(sortByFinishDate);

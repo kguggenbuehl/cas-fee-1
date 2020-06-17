@@ -38,6 +38,10 @@ export class NotesStore {
     async all() {
         return await this.db.find({});
     }
+
+    async getOnlyUnfinishedNotes(){
+        return await this.db.find({isFinished: false});
+    }
 }
 
 export const notesStore = new NotesStore();
