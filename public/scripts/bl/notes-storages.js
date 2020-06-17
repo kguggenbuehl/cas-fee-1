@@ -9,9 +9,7 @@ export default class NoteList {
     }
 
     async getNotes() {
-
         this.noteList = await httpService.ajax("GET", `/notes/showfinished=${this.showFinishedNotes}`, undefined);
-
         return this.sortList(this.noteList);
     }
     async setNote(note) {
@@ -39,18 +37,9 @@ export default class NoteList {
         })
         return note[0];
     }
-    sortList(noteList){
-
-        if (this.sortBy === 1) {
-            this.noteList = this.noteList.sort(sortByFinishDate);
-        }
-        else if (this.sortBy === 2) {
-            this.noteList = this.noteList.sort(sortByCreateDate);
-        }
-        else if (this.sortBy === 3) {
-            this.noteList = this.noteList.sort(sortByRate);
-        }
-        return noteList;
+    sortList(){
+        const sortOptions = [sortByFinishDate, sortByCreateDate, sortByRate];
+        return this.noteList.sort(sortOptions[this.sortBy - 1]);
     }
     setSortOrder(sortBy){
         this.sortBy = sortBy;
