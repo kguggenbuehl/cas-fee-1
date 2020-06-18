@@ -1,5 +1,5 @@
 Handlebars.registerHelper('formatDateReadable', function (date) {
-    const dateAsCalendar =moment(date).calendar({
+    return moment(date).calendar({
         sameDay: '[Today]',
         nextDay: '[Tomorrow]',
         nextWeek: 'dddd',
@@ -7,12 +7,10 @@ Handlebars.registerHelper('formatDateReadable', function (date) {
         lastWeek: '[Last] dddd',
         sameElse: 'MMMM Do YYYY'
     });
-    return dateAsCalendar;
 })
 
 Handlebars.registerHelper('formatDateForInput', function (date) {
-    const dateForInput = moment(date).format('YYYY-MM-DD');
-    return dateForInput;
+    return moment(date).format('YYYY-MM-DD');
 })
 
 Handlebars.registerHelper('formatRating', function (rating) {
