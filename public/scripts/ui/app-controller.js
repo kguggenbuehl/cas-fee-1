@@ -32,7 +32,7 @@ function initEventHandlers() {
             noteList.toggleIsFinishedById(finishId);
             return renderNoteList();
          }
-        else if (showMoreId) {
+        if (showMoreId) {
             const desc = document.querySelectorAll(`[data-desc-id="${showMoreId}"]`)[0];
             if (desc.style.display === "block") {
                 desc.style.display = "none";
@@ -40,7 +40,7 @@ function initEventHandlers() {
                 desc.style.display = "block";
             }
         }
-        else if (deleteId) {
+        if (deleteId) {
             noteList.deleteNote(deleteId);
             return renderNoteList();
         }

@@ -15,30 +15,24 @@ export class NotesStore {
     constructor(db) {
         this.db = db || new Datastore({filename: './data/notes.db', autoload: true});
     }
-
     async add(note) {
         let newNote = new Note(note.title, note.description, note.rating, note.finishDate);
         return await this.db.insert(newNote);
     }
-
     async delete(id) {
         await this.db.remove({_id: id});
         return await this.get(id);
     }
-
     async update(id, note) {
-        await this.db.update({_id: id}, { $set: {title: note.title, description: note.description, rating: note.rating, finishDate: note.finishDate}}, {});
+        await this.db.update({_id: id}, { $set: {title: note.title, description: note.description, rating: note.rating, finishDate: note.finishDate, isFinished: note.isFinished}}, {});
         return await this.get(id);
     }
-
     async get(id) {
         return await this.db.findOne({_id: id});
     }
-
     async all() {
         return await this.db.find({});
     }
-
     async getOnlyUnfinishedNotes(){
         return await this.db.find({isFinished: false});
     }

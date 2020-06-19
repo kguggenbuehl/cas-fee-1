@@ -7,7 +7,7 @@ import {notesRoutes} from './routes/notesRoutes';
 
 const app = express();
 
-const router = express.Router();
+// const router = express.Router();
 
 app.use(express.static(path.resolve('public')));
 

@@ -30,6 +30,7 @@ function initEventHandlers() {
             newNote.description = document.getElementById('form__input--desc').value;
             newNote.rating = document.getElementById('form__input--importance').value;
             newNote.finishDate = new Date(document.getElementById('form__input--duedate').value);
+            newNote.isFinished = document.getElementById('form__input--is-finished').checked;
 
             let id = getDataFromQuery('id');
 
@@ -48,8 +49,8 @@ function initEventHandlers() {
 // render DOM
 async function renderForm(){
     const id = getDataFromQuery('id');
-    const notes = await noteList.getNote(id) || {};
-    templateContainer.innerHTML = createForm(notes);
+    const note = await noteList.getNote(id) || {};
+    templateContainer.innerHTML = createForm(note);
 }
 
 // wait until scripts have been loaded

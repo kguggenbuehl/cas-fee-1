@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="css/screen.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/solid.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js" defer></script>
+
     <script src="scripts/bl/handlebars.js" defer></script>
 
     <script src="scripts/ui/edit-item-controller.js" type="module"></script>
@@ -31,6 +33,8 @@
             </select>
             <label class="form__label" for="form__input--duedate">Duedate</label>
             <input class="form__input" type="date" id="form__input--duedate" name="Duedate" value="{{formatDateForInput finishDate}}" required>
+            <label class="form__label" for="form__input--is-finished">Is finished</label>
+            <input class="form__input" type="checkbox" id="form__input--is-finished" name="isFinished" {{#if isFinished}}checked{{/if}}>
             <button type="submit" class="form__submit btn btn--add border" id="form__submit">Save</button>
             <a class=" form__cancel btn border" href="app.html">Cancel</a>
         </form>
@@ -40,7 +44,6 @@
 </head>
 <body id="body">
 <div class="wrapper">
-
     <header class="header">
         <div class="header__inner wrap">
             <h1 class="maintitle">Add new todo</h1>
@@ -65,7 +68,6 @@
             </div>
         </div>
     </main>
-
 </div>
 </body>
 </html>
