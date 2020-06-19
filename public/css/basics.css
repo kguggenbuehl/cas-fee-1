@@ -5,6 +5,7 @@
     --primary-color: #5BE47A;
     --background-color--header: #E0E3E9;
     --background-color--todo-content: #F1F3F7;
+    --formfields-color: #fff;
     --border-color: #979797;
     --border-color--active: #484848;
     --gradient-btn: linear-gradient(264deg, #B1ECD9 1%, #CBFAD6 100%);
@@ -16,7 +17,8 @@
     --text-color: #fff;
     --background-color: #26262D;
     --background-color--header: #51515C;
-    --background-color--todo-content: #484848;
+    --background-color--todo-content: #51515C;
+    --formfields-color: #51515C;
 }
 *,
 *::before,
@@ -30,6 +32,13 @@
 label:hover,
 .btn:hover {
     cursor: pointer;
+}
+input,
+textarea,
+select {
+    border: 1px solid var(--border-color);
+    background-color: var(--formfields-color);
+    color: var(--text-color);
 }
 body {
     font: 1rem/1.5 'Hind', Arial, Geneva, sans-serif;
