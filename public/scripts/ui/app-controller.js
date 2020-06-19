@@ -22,7 +22,7 @@ function initEventHandlers() {
     // render DOM
     renderNoteList();
 
-    // add eventhandler to finish- and show-more-Button
+    // add eventlistener to finish- and show-more-Button
     templateContainer.addEventListener('click', function(event){
         const finishId = event.target.dataset.finishId;
         const showMoreId = event.target.dataset.showMoreId;
@@ -32,7 +32,7 @@ function initEventHandlers() {
             noteList.toggleIsFinishedById(finishId);
             return renderNoteList();
          }
-        if (showMoreId) {
+        else if (showMoreId) {
             const desc = document.querySelectorAll(`[data-desc-id="${showMoreId}"]`)[0];
             if (desc.style.display === "block") {
                 desc.style.display = "none";
@@ -40,19 +40,19 @@ function initEventHandlers() {
                 desc.style.display = "block";
             }
         }
-        if (deleteId) {
+        else if (deleteId) {
             noteList.deleteNote(deleteId);
             return renderNoteList();
         }
     })
 
-    // add eventhandler to "Show finish"-Button
+    // add eventlistener to "Show finish"-Button
     showFinishedButton.addEventListener('click', function(event){
         noteList.setShowFinishedStatus(event.target.checked);
         return renderNoteList();
     })
 
-    // add eventhandler to "Sort"-Buttons
+    // add eventlistener to "Sort"-Buttons
     sortButtons.map(function(item){
         item.addEventListener('click', function(event){
             noteList.setSortOrder(parseInt(event.target.value));

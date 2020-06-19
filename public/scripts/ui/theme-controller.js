@@ -1,10 +1,10 @@
-import cookie from "../bl/cookie-service.js";
+import CookieService from "../bl/cookie-service.js";
 
 class Theme {
     constructor() {
         this.themeSwitcher = document.getElementById('theme-switch');
         this.cookieKey ='theme';
-        this.cookie = cookie;
+        this.cookie = CookieService;
         this.theme = this.getThemeCookie(this.cookieKey) || 1;
         this.updateHtmlTheme(this.theme);
         this.addEventListeners();
@@ -24,7 +24,7 @@ class Theme {
     }
     updateHtmlTheme(){
         document.body.setAttribute('data-theme', this.theme);
-        let activeBtn = document.querySelectorAll(`[value="${this.theme}"]`);
+        let activeBtn = document.querySelectorAll(`[name="theme"][value="${this.theme}"]`);
         activeBtn[0].checked = true;
     }
     getThemeCookie(cname){
@@ -34,7 +34,6 @@ class Theme {
         this.cookie.setCookie(cname, cvalue, exdays);
     }
 }
-
 
 const theme = new Theme();
 export default theme;
