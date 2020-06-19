@@ -1,4 +1,4 @@
-class Cookie {
+class CookieService {
     setCookie(cname, cvalue, exdays) {
         let d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -6,10 +6,10 @@ class Cookie {
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
     getCookie(cname) {
-        var name = cname + "=";
-        var ca = document.cookie.split(';');
-        for(var i = 0; i < ca.length; i++) {
-            var c = ca[i];
+        let name = cname + "=";
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
             while (c.charAt(0) == ' ') {
                 c = c.substring(1);
             }
@@ -21,5 +21,5 @@ class Cookie {
     }
 }
 
-const cookie = new Cookie();
+const cookie = new CookieService();
 export default cookie;

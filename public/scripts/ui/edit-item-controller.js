@@ -2,12 +2,11 @@ import Note from '../bl/note.js';
 import NoteList from '../bl/notes-storages.js';
 import Theme from '../ui/theme-controller.js';
 import httpService from "../bl/http-service.js";
+import getDataFromQuery from "../bl/shared.js";
 
 let templateContainer;
 let templateSource;
 let createForm;
-
-let saveButton;
 
 const noteList = new NoteList();
 
@@ -51,12 +50,6 @@ async function renderForm(){
     const id = getDataFromQuery('id');
     const notes = await noteList.getNote(id) || {};
     templateContainer.innerHTML = createForm(notes);
-}
-
-function getDataFromQuery(key){
-    const params = new URLSearchParams(window.location.search);
-    const value = params.get(key) || false;
-    return value;
 }
 
 // wait until scripts have been loaded

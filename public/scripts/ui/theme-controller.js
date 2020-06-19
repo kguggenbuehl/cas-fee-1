@@ -1,4 +1,4 @@
-import cookie from "../bl/cookie.js";
+import cookie from "../bl/cookie-service.js";
 
 class Theme {
     constructor() {

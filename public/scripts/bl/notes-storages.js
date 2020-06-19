@@ -1,5 +1,5 @@
 import httpService from '../bl/http-service.js';
-import cookie from "../bl/cookie.js";
+import cookie from "./cookie-service.js";
 
 export default class NoteList {
 
