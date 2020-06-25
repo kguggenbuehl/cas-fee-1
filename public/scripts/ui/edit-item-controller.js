@@ -40,7 +40,7 @@ function initEventHandlers() {
                 noteList.setNote(newNote);
             }
 
-            window.location.replace("app.html");
+            window.location.replace("index.html");
 
         }
     })

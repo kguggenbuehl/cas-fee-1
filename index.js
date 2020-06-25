@@ -14,7 +14,7 @@ app.use(express.static(path.resolve('public')));
 app.use(bodyParser.json());
 
 app.get("/", function(req, res){
-    res.sendFile("/app.html",  {root: path.resolve() + '/public/'});
+    res.sendFile("/index.html",  {root: path.resolve() + '/public/'});
 });
 app.use("/notes", notesRoutes);
 
