@@ -16,11 +16,8 @@ function initEventHandlers() {
     templateSource = document.getElementById('template-form').innerHTML;
     createForm = Handlebars.compile(templateSource);
 
-    // render DOM
-    renderForm();
-
     // add eventhandler to "Save"-Button
-    templateContainer.addEventListener('click', function (event) {
+    templateContainer.addEventListener('click', async function (event) {
         if( event.target === document.getElementById('form__submit')){
 
             event.preventDefault() ;
@@ -35,9 +32,9 @@ function initEventHandlers() {
             let id = getDataFromQuery('id');
 
             if (id) {
-                noteList.updateNote(id, newNote);
+                await noteList.updateNote(id, newNote);
             } else {
-                noteList.setNote(newNote);
+                await noteList.setNote(newNote);
             }
 
             window.location.replace("index.html");
@@ -58,4 +55,6 @@ document.addEventListener(
     'DOMContentLoaded',
     () => {
         initEventHandlers();
+        // render DOM
+        renderForm();
     });

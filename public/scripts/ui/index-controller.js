@@ -5,10 +5,10 @@ let templateContainer;
 let templateSource;
 let createNoteList;
 
-let noteList = new NoteList();
+let showFinishedButton;
+let sortButtons;
 
-let showFinishedButton = document.getElementById('sort__input--show-finished');
-let sortButtons = Array.from(document.getElementsByClassName('sort__input'));
+let noteList = new NoteList();
 
 function initEventHandlers() {
     // init template
@@ -16,11 +16,8 @@ function initEventHandlers() {
     templateSource = document.getElementById('template-todo-item').innerHTML;
     createNoteList = Handlebars.compile(templateSource);
 
-    // update sort-bar
-    updateSortBar();
-
-    // render DOM
-    renderNoteList();
+    showFinishedButton = document.getElementById('sort__input--show-finished');
+    sortButtons = Array.from(document.getElementsByClassName('sort__input'));
 
     // add eventlistener to finish- and show-more-Button
     templateContainer.addEventListener('click', function(event){
@@ -72,7 +69,6 @@ function updateSortBar(){
 async function renderNoteList(){
     const notes = await noteList.getNotes();
     templateContainer.innerHTML = createNoteList(notes);
-
 }
 
 // wait until scripts have been loaded
@@ -80,4 +76,8 @@ document.addEventListener(
 'DOMContentLoaded',
 () => {
     initEventHandlers();
+    // update sort-bar
+    updateSortBar();
+    // render DOM
+    renderNoteList();
 });
