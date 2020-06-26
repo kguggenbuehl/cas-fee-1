@@ -18,38 +18,42 @@
     <script src="scripts/ui/index-controller.js" type="module"></script>
     <script id="template-todo-item" type="text/x-handlebars-template">
         <ul id="app__todos-lst" class="app__todos-lst app__todos-lst--hidefinished">
-            {{#each this}}
-                <li class="todo {{#if finished}}todo--finished{{else}}todo--open{{/if}}">
-                <div class="todo__finishdate">
-                    <h2>{{formatDateReadable finishDate}}</h2>
-                </div>
-                <div class="todo__content">
-                    <div class="todo__heading border">
-                        <div class="todo__title">
-                            <h3>{{title}}</h3>
+            {{#if this}}
+                {{#each this}}
+                    <li class="todo {{#if finished}}todo--finished{{else}}todo--open{{/if}}">
+                    <div class="todo__finishdate">
+                        <h2>{{formatDateReadable finishDate}}</h2>
+                    </div>
+                    <div class="todo__content">
+                        <div class="todo__heading border">
+                            <div class="todo__title">
+                                <h3>{{title}}</h3>
+                            </div>
+                            <div class="todo__checkbox">
+                                <input class="todo__input" type="checkbox" id="todo__input--{{_id}}" data-finish-id={{_id}}
+                                       name="todo__input" {{#if isFinished}}checked{{/if}}>
+                                <label class="todo__label" for="todo__input--{{_id}}"><span class="visuallyhidden">is finished</span></label>
+                            </div>
+                            <div class="todo__rating">{{{formatRating rating '<i class="fas fa-star"></i>'}}}</div>
+                            <div class="todo__opener">
+                                <button class="btn btn--icon border" data-show-more-id={{_id}}><i class="fas fa-caret-down"></i></button>
+                            </div>
                         </div>
-                        <div class="todo__checkbox">
-                            <input class="todo__input" type="checkbox" id="todo__input--{{_id}}" data-finish-id={{_id}}
-                                   name="todo__input" {{#if isFinished}}checked{{/if}}>
-                            <label class="todo__label" for="todo__input--{{_id}}"><span class="visuallyhidden">is finished</span></label>
-                        </div>
-                        <div class="todo__rating">{{{formatRating rating '<i class="fas fa-star"></i>'}}}</div>
-                        <div class="todo__opener">
-                            <button class="btn btn--icon border" data-show-more-id={{_id}}><i class="fas fa-caret-down"></i></button>
+                        <div class="todo__desc border" data-desc-id={{_id}}>
+                            <p>{{description}}</p>
                         </div>
                     </div>
-                    <div class="todo__desc border" data-desc-id={{_id}}>
-                        <p>{{description}}</p>
+                    <div class="todo__edit">
+                        <a class="btn btn--icon border" href="edit-item.html?id={{_id}}"><i class="fas fa-edit"></i></a>
                     </div>
-                </div>
-                <div class="todo__edit">
-                    <a class="btn btn--icon border" href="edit-item.html?id={{_id}}"><i class="fas fa-edit"></i></a>
-                </div>
-                <div class="todo__delete">
-                    <a class="btn btn--icon border" data-delete-id={{_id}} href="#""><i class="fas fa-trash-alt"></i></a>
-                </div>
-            </li>
-            {{/each}}
+                    <div class="todo__delete">
+                        <a class="btn btn--icon border" data-delete-id={{_id}} href="#""><i class="fas fa-trash-alt"></i></a>
+                    </div>
+                </li>
+                {{/each}}
+            {{else}}
+                <p>No entries. Enjoy your life!</p>
+            {{/if}}
         </ul>
     </script>
 
