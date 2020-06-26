@@ -46,7 +46,7 @@ export default class NotesStorages {
     changeSortDirection(notes, setCookie){
         if (setCookie) {
             this.setSortDirectionChanged(!this.sortDirectionChanged)
-        };
+        }
         return notes.reverse();
     }
     setSortDirectionChanged(sortDirectionChanged){

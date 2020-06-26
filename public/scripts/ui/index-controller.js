@@ -78,7 +78,7 @@ async function renderNoteList(){
     notesStorages.sortList(notesStorages.noteList);
     if (notesStorages.sortDirectionChanged) {
         notesStorages.changeSortDirection(notesStorages.noteList, false)
-    };
+    }
     updateNoteList(notesStorages.noteList);
 }
 

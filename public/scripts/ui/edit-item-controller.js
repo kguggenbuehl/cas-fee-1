@@ -32,9 +32,9 @@ function initEventHandlers() {
             let id = getDataFromQuery('id');
 
             if (id) {
-                await noteList.updateNote(id, newNote);
+                await notesStorages.updateNote(id, newNote);
             } else {
-                await noteList.setNote(newNote);
+                await notesStorages.setNote(newNote);
             }
 
             window.location.replace("index.html");
