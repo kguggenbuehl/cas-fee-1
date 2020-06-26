@@ -1,4 +1,4 @@
-import NoteList from '../bl/notes-storages.js';
+import NotesStorages from '../bl/notes-storages.js';
 import Theme from '../ui/theme-controller.js';
 
 let templateContainer;
@@ -8,7 +8,7 @@ let createNoteList;
 let showFinishedButton;
 let sortButtons;
 
-let noteList = new NoteList();
+let notesStorages = new NotesStorages();
 
 function initEventHandlers() {
     // init template
@@ -26,7 +26,7 @@ function initEventHandlers() {
         const deleteId = event.target.dataset.deleteId;
 
         if (finishId) {
-            noteList.toggleIsFinishedById(finishId);
+            notesStorages.toggleIsFinishedById(finishId);
             return renderNoteList();
          }
         if (showMoreId) {
@@ -38,36 +38,52 @@ function initEventHandlers() {
             }
         }
         if (deleteId) {
-            noteList.deleteNote(deleteId);
+            notesStorages.deleteNote(deleteId);
             return renderNoteList();
         }
     })
 
     // add eventlistener to "Show finish"-Button
     showFinishedButton.addEventListener('click', function(event){
-        noteList.setShowFinishedStatus(event.target.checked);
+        notesStorages.setShowFinishedStatus(event.target.checked);
         return renderNoteList();
     })
 
     // add eventlistener to "Sort"-Buttons
     sortButtons.map(function(item){
-        item.addEventListener('click', function(event){
-            noteList.setSortOrder(parseInt(event.target.value));
-            return renderNoteList();
+        item.addEventListener('click', async function(event){
+            const sortBtnValue = parseInt(event.target.value);
+            if (sortBtnValue === notesStorages.sortBy) {
+                await notesStorages.changeSortDirection(notesStorages.noteList, true);
+            }
+            else {
+                notesStorages.setSortBy(sortBtnValue);
+                await notesStorages.sortList(notesStorages.noteList)
+            }
+            return updateNoteList(notesStorages.noteList);
         })
     })
 }
 
 // update checked-status of buttons
 function updateSortBar(){
-    showFinishedButton.checked = noteList.showFinishedNotes;
-    let activeBtn = sortButtons.filter(btn => parseInt(btn.value) === noteList.sortBy);
+    showFinishedButton.checked = notesStorages.showFinishedNotes;
+    let activeBtn = sortButtons.filter(btn => parseInt(btn.value) === notesStorages.sortBy);
     activeBtn[0].checked = true;
 }
 
-// render DOM
+// get Notes
 async function renderNoteList(){
-    const notes = await noteList.getNotes();
+    notesStorages.noteList = await notesStorages.getNotes();
+    notesStorages.sortList(notesStorages.noteList);
+    if (notesStorages.sortDirectionChanged) {
+        notesStorages.changeSortDirection(notesStorages.noteList, false)
+    };
+    updateNoteList(notesStorages.noteList);
+}
+
+// render DOM
+function updateNoteList(notes){
     templateContainer.innerHTML = createNoteList(notes);
 }
 

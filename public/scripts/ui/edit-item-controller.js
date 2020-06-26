@@ -1,5 +1,5 @@
 import Note from '../bl/note.js';
-import NoteList from '../bl/notes-storages.js';
+import NotesStorages from '../bl/notes-storages.js';
 import Theme from '../ui/theme-controller.js';
 import httpService from "../bl/http-service.js";
 import getDataFromQuery from "../bl/shared.js";
@@ -8,7 +8,7 @@ let templateContainer;
 let templateSource;
 let createForm;
 
-const noteList = new NoteList();
+const notesStorages = new NotesStorages();
 
 function initEventHandlers() {
     // init template
@@ -46,7 +46,7 @@ function initEventHandlers() {
 // render DOM
 async function renderForm(){
     const id = getDataFromQuery('id');
-    const note = await noteList.getNote(id) || {};
+    const note = await notesStorages.getNote(id) || {};
     templateContainer.innerHTML = createForm(note);
 }
 

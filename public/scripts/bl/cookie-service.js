@@ -1,12 +1,17 @@
 class CookieService {
     setCookie(cname, cvalue, exdays) {
-        let expires = "";
-        if (exdays) {
-            let date = new Date();
-            date.setTime(date.getTime()+(exdays*24*60*60*1000));
-            expires = "; expires="+date.toUTCString();
+        try {
+            let expires = "";
+            if (exdays) {
+                let date = new Date();
+                date.setTime(date.getTime()+(exdays*24*60*60*1000));
+                expires = "; expires="+date.toUTCString();
+            }
+            document.cookie = cname+"="+cvalue+expires+"; path=/";
         }
-        document.cookie = cname+"="+cvalue+expires+"; path=/";
+        catch (e) {
+            console.error(e);
+        }
     }
     getCookie(cname) {
         const nameEQ = cname + "=";

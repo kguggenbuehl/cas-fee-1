@@ -1,16 +1,16 @@
 import httpService from '../bl/http-service.js';
 import cookie from "./cookie-service.js";
 
-export default class NoteList {
+export default class NotesStorages {
 
     constructor() {
+        this.noteList = [];
         this.sortBy = parseInt(cookie.getCookie('sortBy')) || 1;
+        this.sortDirectionChanged = cookie.getCookie('sortDirectionChanged') === 'true';
         this.showFinishedNotes = cookie.getCookie('showFinishedNotes') === 'true';
     }
-
     async getNotes() {
-        this.noteList = await httpService.ajax("GET", `/notes/showfinished=${this.showFinishedNotes}`, undefined);
-        return this.sortList(this.noteList);
+        return await httpService.ajax("GET", `/notes/showfinished=${this.showFinishedNotes}`, undefined);
     }
     async setNote(note) {
         return await httpService.ajax("POST", "/notes/", {note: note});
@@ -25,11 +25,9 @@ export default class NoteList {
         return await httpService.ajax("DELETE", `/notes/${id}`);
     }
     async toggleIsFinishedById(id){
-
         let note = this.returnNoteById(id);
         note.isFinished = !note.isFinished;
         await this.updateNote(id, note);
-
     }
     returnNoteById(id) {
         let note = this.noteList.filter(item => {
@@ -37,27 +35,27 @@ export default class NoteList {
         })
         return note[0];
     }
-    sortList(){
+    sortList(notes){
         const sortOptions = [sortByFinishDate, sortByCreateDate, sortByRate];
-        return this.noteList.sort(sortOptions[this.sortBy - 1]);
+        return notes.sort(sortOptions[this.sortBy - 1]);
     }
-    setSortOrder(sortBy){
+    setSortBy(sortBy){
         this.sortBy = sortBy;
-        try {
-            cookie.setCookie('sortBy', sortBy, 365);
-        }
-        catch (e) {
-            console.error(e);
-        }
+        cookie.setCookie('sortBy', sortBy, 365);
+    }
+    changeSortDirection(notes, setCookie){
+        if (setCookie) {
+            this.setSortDirectionChanged(!this.sortDirectionChanged)
+        };
+        return notes.reverse();
+    }
+    setSortDirectionChanged(sortDirectionChanged){
+        this.sortDirectionChanged = sortDirectionChanged;
+        cookie.setCookie('sortDirectionChanged', this.sortDirectionChanged, 365);
     }
     setShowFinishedStatus(showFinishedNotes){
         this.showFinishedNotes = showFinishedNotes;
-        try {
-            cookie.setCookie('showFinishedNotes', showFinishedNotes, 365);
-        }
-        catch (e) {
-            console.error(e);
-        }
+        cookie.setCookie('showFinishedNotes', showFinishedNotes, 365);
     }
 }
 
